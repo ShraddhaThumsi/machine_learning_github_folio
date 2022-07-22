@@ -23,10 +23,10 @@ for row in csvreader:
     y_axis_vals_2.append(row[2])
 
 file.close()
-x_axis_vals = np.array(x_axis_vals).astype(np.float)
-y_axis_vals = np.array(y_axis_vals).astype(np.float)
-y_axis_vals_2 = np.array(y_axis_vals).astype(np.float)
 
+X = np.array(x_axis_vals).astype(np.float)
+y = np.array(y_axis_vals).astype(np.float)
+y2 = np.array(y_axis_vals).astype(np.float)
 def find_deviations(axis_1, axis_2):
     n = len(axis_1)
 
@@ -46,18 +46,20 @@ def find_deviations(axis_1, axis_2):
 
     return running_sum - (n * mean_1 * mean_2)
 
-deviation_xx = find_deviations(axis_1=x_axis_vals, axis_2=x_axis_vals)
-deviation_xy = find_deviations(axis_1= x_axis_vals, axis_2 = y_axis_vals_2)
+deviation_xx = find_deviations(axis_1=X, axis_2=X)
+deviation_xy = find_deviations(axis_1= X, axis_2 = y2)
 
 b_1 = deviation_xy/deviation_xx
-b_0 = np.mean(y_axis_vals_2) - (b_1 * np.mean(x_axis_vals))
+b_0 = np.mean(y2) - (b_1 * np.mean(X))
 
 
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(x_axis_vals.reshape(-1,1), y_axis_vals, test_size=0.4,
+
+
+X_train, X_test, y_train, y_test = train_test_split(X.reshape(-1,1), y, test_size=0.4,
 													random_state=1)
 
-
+print(X_train.shape)
 # create linear regression object
 reg = linear_model.LinearRegression()
 

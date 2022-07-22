@@ -42,14 +42,7 @@ print('Coefficients: ', reg.coef_)
 # variance score: 1 means perfect prediction
 print('Variance score: {}'.format(reg.score(X_test, y_test)))
 
-print("printing shape of train data - data first, label 2nd")
-print(X_train.shape)
-print(y_train.shape)
 
-
-print("printing shape of test data -data first, label 2nd")
-print(X_test.shape)
-print(y_test.shape)
 
 inhouse_plotter.plot_variance(X_train,y_train,X_test,y_test,reg)
 
