@@ -5,6 +5,7 @@ import numpy as np
 from sklearn import linear_model
 import os
 import matplotlib.pyplot as plt
+import machine_learning.plotter as inhouse_plotter
 dirname = os.path.dirname(__file__)
 data_pairs_path = '../data/preprocessed_files/rbi/crop_data_pairs.csv'
 filename = os.path.join(dirname, data_pairs_path)
@@ -66,45 +67,7 @@ reg.fit(X_train, y_train)
 # variance score: 1 means perfect prediction
 print('Variance score: {}'.format(reg.score(X_test, y_test)))
 
-print("printing shape of train data - data first, label 2nd")
-print(type(X_train))
-print(X_train.shape)
-print(type(y_train))
-print(y_train.shape)
 
-
-print("printing shape of test data -data first, label 2nd")
-print(type(X_test))
-print(X_test.shape)
-print(type(y_test))
-print(y_test.shape)
-
-def plot_predictions_and_scores():
-    ## setting plot style
-    plt.style.use('fivethirtyeight')
-    plt.ylim(-1,1)
-
-    ## plotting residual errors in training data
-    plt.scatter(reg.predict(X_train), reg.predict(X_train) - y_train,
-                color="green", s=10, label='Train data')
-
-    ## plotting residual errors in test data
-    plt.scatter(reg.predict(X_test), reg.predict(X_test) - y_test,
-                color="blue", s=10, label='Test data')
-
-    ## plotting line for zero residual error
-    # plt.hlines(y=reg.score(X_train, y_train),xmin=0,xmax=3500,linewidth=2,color='b',label='closeness score of train data')
-    plt.hlines(y=reg.score(X_test, y_test), xmin=0, xmax=3500, linewidth=2, color='r',
-               label='closeness score of test data')
-
-    ## plotting legend
-    plt.legend(loc='lower right')
-
-    ## plot title
-    plt.title("Closeness to true total cereal production in lakh tonnes from 1950-2021")
-
-    ## method call for showing the plot
-    plt.show()
 
 def plot_regression_line(x, y, b_0,b_1):
     # plotting the actual points as scatter plot
@@ -123,14 +86,7 @@ def plot_regression_line(x, y, b_0,b_1):
 
     # function to show plot
     plt.show()
-print("values of predictions on training data")
-for i in list(reg.predict(X_train)):
-    print(i)
 
-
-print("value of predictions of testing data")
-for i in list(reg.predict(X_test)):
-    print(i)
-plot_predictions_and_scores()
+inhouse_plotter.plot_variance(X_train, y_train,X_test,y_test,reg)
 
 #plot_regression_line(x_axis_vals, y_axis_vals, b_0,b_1)
