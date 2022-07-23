@@ -14,19 +14,19 @@ csvreader = csv.reader(file)
 
 x_axis_vals = []
 y_axis_vals = []
-y_axis_vals_2 = []
+#y_axis_vals_2 = []
 rows = []
 for row in csvreader:
     rows.append(row)
     x_axis_vals.append(row[0])
-    y_axis_vals.append(row[1])
-    y_axis_vals_2.append(row[2])
+    y_axis_vals.append(row[-1])
+    #y_axis_vals_2.append(row[2])
 
 file.close()
 
 X = np.array(x_axis_vals).astype(np.float)
 y = np.array(y_axis_vals).astype(np.float)
-y2 = np.array(y_axis_vals).astype(np.float)
+#y2 = np.array(y_axis_vals).astype(np.float)
 def find_deviations(axis_1, axis_2):
     n = len(axis_1)
 
@@ -47,10 +47,10 @@ def find_deviations(axis_1, axis_2):
     return running_sum - (n * mean_1 * mean_2)
 
 deviation_xx = find_deviations(axis_1=X, axis_2=X)
-deviation_xy = find_deviations(axis_1= X, axis_2 = y2)
+deviation_xy = find_deviations(axis_1= X, axis_2 = y)
 
 b_1 = deviation_xy/deviation_xx
-b_0 = np.mean(y2) - (b_1 * np.mean(X))
+b_0 = np.mean(y) - (b_1 * np.mean(X))
 
 
 from sklearn.model_selection import train_test_split
