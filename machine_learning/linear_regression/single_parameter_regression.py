@@ -70,6 +70,12 @@ reg = linear_model.LinearRegression()
 # train the model using the training sets
 reg.fit(X_train, y_train)
 
+print('Coefficients: ', reg.coef_)
+print("beta1")
+print(b_1)
+print("beta0")
+print(b_0)
+
 # variance score: 1 means perfect prediction
 print('Variance score: {}'.format(reg.score(X_test, y_test)))
 
