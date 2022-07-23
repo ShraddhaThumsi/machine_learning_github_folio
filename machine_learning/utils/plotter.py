@@ -30,21 +30,16 @@ def plot_variance(X_train,y_train,X_test,y_test,regression_model):
 
 def plot_regression_line(x, y, b_0,b_1,crop='',is_singlevariate=True):
     # plotting the actual points as scatter plot
-    print('in plot reg line func')
-    print('shape of x is')
-    print(x.shape)
-    print('shape of y is')
-    print(y.shape)
-    print('shape of b1 is')
-    print(b_1.shape)
-    print('shape of x*b1 is')
-    print((np.matmul(x,b_1)).shape)
+
 
     plt.scatter(x, y, color="m",
                 marker="o", s=12)
 
     # predicted response vector
-    y_pred = b_0 + np.matmul(x,b_1)
+    if is_singlevariate:
+        y_pred = b_0 + x*b_1
+    else:
+        y_pred = b_0 + np.matmul(x,b_1)
 
     # plotting the regression line
     plt.plot(x, y_pred, color="g")
@@ -54,8 +49,8 @@ def plot_regression_line(x, y, b_0,b_1,crop='',is_singlevariate=True):
         crop_for_analysis = crop
     else:
         crop_for_analysis = 'Rice,Wheat,Cereal'
-    plt.xlabel(f'Production in lakh tonne of {crop_for_analysis} from 1950-2021')
-    plt.ylabel(f'Production in lakh tone of total cereal from 1950-2021')
-
+    plt.xlabel(f'Production of {crop_for_analysis}')
+    plt.ylabel(f'Total production of cereal crops')
+    plt.title(f'Production of total cereal given production of {crop_for_analysis} in lakh tonne from 1950-2021')
     # function to show plot
     plt.show()

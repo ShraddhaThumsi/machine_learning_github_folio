@@ -15,7 +15,7 @@ x_axis_vals = []
 y_axis_vals = []
 rows = []
 list_of_possible_crops = ['Rice','Wheat','Coarse Cereals']
-crop_for_analysis = 'Coarse Cereals'
+crop_for_analysis = 'Rice'
 index_to_search = list_of_possible_crops.index(crop_for_analysis)
 for row in csvreader:
     rows.append(row)
