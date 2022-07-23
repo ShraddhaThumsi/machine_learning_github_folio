@@ -21,20 +21,10 @@ print('about to call read data function')
 all_data = read_data_from_file(fullpath_to_datafile)
 headers = all_data[0]
 data = all_data[1:]
-def prepare_data_pairs(headers, vals,crop='Rice'):
-    data_set = []
-    rice_index = headers.index(crop)
-    total_cereals_index = headers.index('TotalCereals')
-    total_foodgrans_index = headers.index('TotalFoodgrains')
-    for v in vals:
-        rice_value = v[rice_index]
-        totalcereals_value = v[total_cereals_index]
-        total_foodgrains_value = v[total_foodgrans_index]
-        data_point = (rice_value,totalcereals_value,total_foodgrains_value)
 
-        data_set.append(data_point)
-    return data_set
-
+# The dataset includes pulses and total food grains too, but here I am presenting calculations only until total cereals
+# If we want to include pulses also, the choices provided in single_parameter_regression,
+#       along with using the correct indices would change
 def prepare_data_rows(vals):
     data_set = []
     index_range_start = 1
@@ -47,7 +37,7 @@ def prepare_data_rows(vals):
 print(headers)
 print(data[1])
 
-#data_pairs = prepare_data_pairs(headers,data,'Rice')
+
 data_pairs = prepare_data_rows(data)
 for p in data_pairs:
     print(p)
