@@ -18,7 +18,7 @@ y_axis_vals = []
 rows = []
 
 list_of_possible_crops = ['Rice','Wheat','Coarse Cereals']
-crop_for_analysis = 'Coarse Cereals'
+crop_for_analysis = 'Rice'
 index_to_search = list_of_possible_crops.index(crop_for_analysis)
 for row in csvreader:
     rows.append(row)
@@ -92,6 +92,19 @@ def plot_regression_line(x, y, b_0,b_1):
 
     # function to show plot
     plt.show()
+
+
+print("shape of xtrain")
+print(X_train.shape)
+print("values of preds on Xtrain")
+for p in list(zip(reg.predict(X_train),y_train)):
+    print(p)
+
+print("shape of xtest")
+print(X_test.shape)
+print("values of preds on Xtest")
+for p in list(zip(reg.predict(X_test),y_test)):
+    print(p)
 
 inhouse_plotter.plot_variance(X_train, y_train,X_test,y_test,reg)
 

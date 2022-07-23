@@ -42,6 +42,17 @@ print('Coefficients: ', reg.coef_)
 # variance score: 1 means perfect prediction
 print('Variance score: {}'.format(reg.score(X_test, y_test)))
 
+print("shape of xtrain")
+print(X_train.shape)
+print("values of preds on Xtrain")
+for p in list(zip(reg.predict(X_train),y_train)):
+    print(p)
+
+print("shape of xtest")
+print(X_test.shape)
+print("values of preds on Xtest")
+for p in list(zip(reg.predict(X_test),y_test)):
+    print(p)
 
 
 inhouse_plotter.plot_variance(X_train,y_train,X_test,y_test,reg)
