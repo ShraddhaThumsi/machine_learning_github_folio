@@ -1,6 +1,6 @@
 #credits to https://www.geeksforgeeks.org/linear-regression-python-implementation/
 # for skeleton of code
-import matplotlib.pyplot as plt
+
 import numpy as np
 from sklearn import linear_model
 import os

@@ -1,5 +1,5 @@
-
-
+#credits to https://www.geeksforgeeks.org/linear-regression-python-implementation/
+# for skeleton of code
 import csv
 import numpy as np
 from sklearn import linear_model
@@ -11,12 +11,9 @@ data_pairs_path = '../data/preprocessed_files/rbi/crop_data_pairs.csv'
 filename = os.path.join(dirname, data_pairs_path)
 file = open(filename)
 csvreader = csv.reader(file)
-
 x_axis_vals = []
 y_axis_vals = []
-#y_axis_vals_2 = []
 rows = []
-
 list_of_possible_crops = ['Rice','Wheat','Coarse Cereals']
 crop_for_analysis = 'Rice'
 index_to_search = list_of_possible_crops.index(crop_for_analysis)
@@ -24,13 +21,10 @@ for row in csvreader:
     rows.append(row)
     x_axis_vals.append(row[index_to_search])
     y_axis_vals.append(row[-1])
-    #y_axis_vals_2.append(row[2])
-
 file.close()
-
 X = np.array(x_axis_vals).astype(np.float)
 y = np.array(y_axis_vals).astype(np.float)
-#y2 = np.array(y_axis_vals).astype(np.float)
+
 def find_deviations(axis_1, axis_2):
     n = len(axis_1)
 
