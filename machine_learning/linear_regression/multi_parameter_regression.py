@@ -45,13 +45,13 @@ print('Variance score: {}'.format(reg.score(X_test, y_test)))
 print("shape of xtrain")
 print(X_train.shape)
 print("values of preds on Xtrain")
-for p in list(zip(reg.predict(X_train),y_train)):
+for p in list(zip(reg.predict(X_train),y_train,abs(reg.predict(X_train)-y_train))):
     print(p)
 
 print("shape of xtest")
 print(X_test.shape)
 print("values of preds on Xtest")
-for p in list(zip(reg.predict(X_test),y_test)):
+for p in list(zip(reg.predict(X_test),y_test,abs(reg.predict(X_train)-y_train))):
     print(p)
 
 
