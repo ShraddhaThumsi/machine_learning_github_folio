@@ -52,4 +52,4 @@ inhouse_plotter.plot_variance(X_train,y_train,X_test,y_test,reg)
 params = inhouse_math.get_regression_parameters(X,y)
 print(params)
 
-#inhouse_plotter.plot_regression_line(X, y, b_0,b_1,is_singlevariate=False)
+#inhouse_plotter.plot_regression_line(X, y, 0,params,is_singlevariate=False)

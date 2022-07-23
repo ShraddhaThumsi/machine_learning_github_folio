@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 def plot_variance(X_train,y_train,X_test,y_test,regression_model):
     ## setting plot style
     plt.style.use('fivethirtyeight')
@@ -27,13 +28,23 @@ def plot_variance(X_train,y_train,X_test,y_test,regression_model):
     plt.show()
 
 
-def plot_regression_line(x, y, b_0,b_1,crop,is_singlevariate=True):
+def plot_regression_line(x, y, b_0,b_1,crop='',is_singlevariate=True):
     # plotting the actual points as scatter plot
+    print('in plot reg line func')
+    print('shape of x is')
+    print(x.shape)
+    print('shape of y is')
+    print(y.shape)
+    print('shape of b1 is')
+    print(b_1.shape)
+    print('shape of x*b1 is')
+    print((np.matmul(x,b_1)).shape)
+
     plt.scatter(x, y, color="m",
                 marker="o", s=12)
 
     # predicted response vector
-    y_pred = b_0 + b_1 * x
+    y_pred = b_0 + np.matmul(x,b_1)
 
     # plotting the regression line
     plt.plot(x, y_pred, color="g")
