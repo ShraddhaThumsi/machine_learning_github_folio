@@ -25,3 +25,26 @@ def plot_variance(X_train,y_train,X_test,y_test,regression_model):
 
     ## method call for showing the plot
     plt.show()
+
+
+def plot_regression_line(x, y, b_0,b_1,crop,is_singlevariate=True):
+    # plotting the actual points as scatter plot
+    plt.scatter(x, y, color="m",
+                marker="o", s=12)
+
+    # predicted response vector
+    y_pred = b_0 + b_1 * x
+
+    # plotting the regression line
+    plt.plot(x, y_pred, color="g")
+
+    # putting labels
+    if is_singlevariate:
+        crop_for_analysis = crop
+    else:
+        crop_for_analysis = 'Rice,Wheat,Cereal'
+    plt.xlabel(f'Production in lakh tonne of {crop_for_analysis} from 1950-2021')
+    plt.ylabel(f'Production in lakh tone of total cereal from 1950-2021')
+
+    # function to show plot
+    plt.show()

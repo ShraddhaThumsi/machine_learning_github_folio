@@ -15,7 +15,7 @@ x_axis_vals = []
 y_axis_vals = []
 rows = []
 list_of_possible_crops = ['Rice','Wheat','Coarse Cereals']
-crop_for_analysis = 'Rice'
+crop_for_analysis = 'Coarse Cereals'
 index_to_search = list_of_possible_crops.index(crop_for_analysis)
 for row in csvreader:
     rows.append(row)
@@ -74,3 +74,5 @@ print('Variance score: {}'.format(reg.score(X_test, y_test)))
 
 inhouse_plotter.plot_variance(X_train, y_train,X_test,y_test,reg)
 
+
+inhouse_plotter.plot_regression_line(X, y, b_0,b_1,crop_for_analysis)

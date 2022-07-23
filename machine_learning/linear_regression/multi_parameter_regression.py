@@ -47,3 +47,4 @@ print('Variance score: {}'.format(reg.score(X_test, y_test)))
 
 inhouse_plotter.plot_variance(X_train,y_train,X_test,y_test,reg)
 
+#inhouse_plotter.plot_regression_line(X, y, b_0,b_1,is_singlevariate=False)
