@@ -30,10 +30,21 @@ def plot_variance(X_train,y_train,X_test,y_test,regression_model):
 
 def plot_regression_line(x, y, b_0,b_1,crop='',is_singlevariate=True):
     # plotting the actual points as scatter plot
+    print('first row of x is')
+    print(x[0])
+    print('when added, their sum is')
+    print(sum(x[0]))
+    list_of_sums_of_indiv_x = []
+    for item in list(x):
+        su = sum(item)
+        list_of_sums_of_indiv_x.append(su)
 
-
-    plt.scatter(x, y, color="m",
+    reformatted_x = np.array(list_of_sums_of_indiv_x).astype(np.float)
+    if is_singlevariate:
+        plt.scatter(x, y, color="m",
                 marker="o", s=12)
+    else:
+        plt.scatter(reformatted_x,y,color='m',marker='o',s=12)
 
     # predicted response vector
     if is_singlevariate:
