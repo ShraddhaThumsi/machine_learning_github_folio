@@ -65,47 +65,12 @@ reg = linear_model.LinearRegression()
 reg.fit(X_train, y_train)
 
 print('Coefficients: ', reg.coef_)
-print("beta1")
-print(b_1)
-print("beta0")
-print(b_0)
+
 
 # variance score: 1 means perfect prediction
 print('Variance score: {}'.format(reg.score(X_test, y_test)))
 
 
 
-def plot_regression_line(x, y, b_0,b_1):
-    # plotting the actual points as scatter plot
-    plt.scatter(x, y, color="m",
-                marker="o", s=30)
-
-    # predicted response vector
-    y_pred = b_0 + b_1 * x
-
-    # plotting the regression line
-    plt.plot(x, y_pred, color="g")
-
-    # putting labels
-    plt.xlabel('x')
-    plt.ylabel('y')
-
-    # function to show plot
-    plt.show()
-
-
-print("shape of xtrain")
-print(X_train.shape)
-print("values of preds on Xtrain")
-for p in list(zip(reg.predict(X_train),y_train,abs(reg.predict(X_train)-y_train))):
-    print(p)
-
-print("shape of xtest")
-print(X_test.shape)
-print("values of preds on Xtest")
-for p in list(zip(reg.predict(X_test),y_test,abs(reg.predict(X_train)-y_train))):
-    print(p)
-
 inhouse_plotter.plot_variance(X_train, y_train,X_test,y_test,reg)
 
-#plot_regression_line(x_axis_vals, y_axis_vals, b_0,b_1)

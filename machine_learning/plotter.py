@@ -3,15 +3,6 @@ def plot_variance(X_train,y_train,X_test,y_test,regression_model):
     ## setting plot style
     plt.style.use('fivethirtyeight')
 
-    print("min value of pred of xtrain is")
-    print(min(abs(regression_model.predict(X_train)-y_train)))
-    print("min value of pred of xtest is")
-    print(min(abs(regression_model.predict(X_test)-y_test)))
-
-    print("max value of pred of xtrain is")
-    print(max(abs(regression_model.predict(X_train))-y_train))
-    print("max value of pred of xtest is")
-    print(max(abs(regression_model.predict(X_test)-y_test)))
 
     ## plotting residual errors in training data
     plt.scatter(regression_model.predict(X_train), regression_model.predict(X_train) - y_train,
