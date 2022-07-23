@@ -5,7 +5,7 @@
 #and https://www.investopedia.com/terms/r/roll-rate.asp
 import os
 import csv
-import machine_learning.data_loader as data_loader
+import machine_learning.utils.data_loader as data_loader
 dirname = os.path.dirname(__file__)
 relative_path_to_file = '../data/original_files/kaggle/loan.csv'
 

@@ -5,7 +5,8 @@ import numpy as np
 from sklearn import linear_model
 import os
 import csv
-import machine_learning.plotter as inhouse_plotter
+import machine_learning.utils.plotter as inhouse_plotter
+import machine_learning.utils.math as inhouse_math
 dirname = os.path.dirname(__file__)
 
 relative_path_to_file = '../data/preprocessed_files/rbi/crop_data_pairs.csv'
@@ -46,5 +47,9 @@ print('Variance score: {}'.format(reg.score(X_test, y_test)))
 
 
 inhouse_plotter.plot_variance(X_train,y_train,X_test,y_test,reg)
+
+
+params = inhouse_math.get_regression_parameters(X,y)
+print(params)
 
 #inhouse_plotter.plot_regression_line(X, y, b_0,b_1,is_singlevariate=False)

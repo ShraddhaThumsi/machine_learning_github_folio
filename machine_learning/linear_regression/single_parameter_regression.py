@@ -4,8 +4,8 @@ import csv
 import numpy as np
 from sklearn import linear_model
 import os
-import matplotlib.pyplot as plt
-import machine_learning.plotter as inhouse_plotter
+import machine_learning.utils.plotter as inhouse_plotter
+import machine_learning.utils.math as inhouse_math
 dirname = os.path.dirname(__file__)
 data_pairs_path = '../data/preprocessed_files/rbi/crop_data_pairs.csv'
 filename = os.path.join(dirname, data_pairs_path)
@@ -49,7 +49,6 @@ deviation_xy = find_deviations(axis_1= X, axis_2 = y)
 
 b_1 = deviation_xy/deviation_xx
 b_0 = np.mean(y) - (b_1 * np.mean(X))
-
 
 from sklearn.model_selection import train_test_split
 
