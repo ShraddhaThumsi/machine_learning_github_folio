@@ -30,30 +30,31 @@ def plot_variance(X_train,y_train,X_test,y_test,regression_model):
 
 def plot_regression_line(x, y, b_0,b_1,crop='',is_singlevariate=True):
     # plotting the actual points as scatter plot
-    print('first row of x is')
-    print(x[0])
-    print('when added, their sum is')
-    print(sum(x[0]))
-    list_of_sums_of_indiv_x = []
-    for item in list(x):
-        su = sum(item)
-        list_of_sums_of_indiv_x.append(su)
 
-    reformatted_x = np.array(list_of_sums_of_indiv_x).astype(np.float)
+
     if is_singlevariate:
         plt.scatter(x, y, color="m",
                 marker="o", s=12)
     else:
+        list_of_sums_of_indiv_x = []
+        for item in list(x):
+            su = sum(item)
+            list_of_sums_of_indiv_x.append(su)
+
+        reformatted_x = np.array(list_of_sums_of_indiv_x).astype(np.float)
         plt.scatter(reformatted_x,y,color='m',marker='o',s=12)
 
     # predicted response vector
     if is_singlevariate:
         y_pred = b_0 + x*b_1
+        # plotting the regression line
+
     else:
         y_pred = b_0 + np.matmul(x,b_1)
 
-    # plotting the regression line
     plt.plot(x, y_pred, color="g")
+
+
 
     # putting labels
     if is_singlevariate:
@@ -62,6 +63,6 @@ def plot_regression_line(x, y, b_0,b_1,crop='',is_singlevariate=True):
         crop_for_analysis = 'Rice,Wheat,Cereal'
     plt.xlabel(f'Production of {crop_for_analysis}')
     plt.ylabel(f'Total production of cereal crops')
-    plt.title(f'Production of total cereal given production of {crop_for_analysis} in lakh tonne from 1950-2021')
+    plt.title(f'Total cereal production given {crop_for_analysis} in lakh tonne from 1950-2021')
     # function to show plot
     plt.show()
