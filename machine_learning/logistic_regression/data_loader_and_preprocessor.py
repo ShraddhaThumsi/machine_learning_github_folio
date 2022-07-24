@@ -1,3 +1,4 @@
+# data credits to: UCI Machine Learning Repository [http://archive.ics.uci.edu/ml].
 import os
 import numpy as np
 relative_path_to_data = '../data/preprocessed_files/uci_archives/data_banknote_authentication.txt'
