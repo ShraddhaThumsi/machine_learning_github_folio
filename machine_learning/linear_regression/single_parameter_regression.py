@@ -93,4 +93,5 @@ inhouse_plotter.plot_variance(X_train, y_train,X_test,y_test,reg)
 
 # In the next graph, we will plot the data itself and the regression line to see how well we fit the data.
 # Again, based on the crop we choose, we can see different graphs here.
+# Refer to univariate_regressionline.png
 inhouse_plotter.plot_regression_line(X, y, b_0,b_1,crop_for_analysis)
