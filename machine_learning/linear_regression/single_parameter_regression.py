@@ -14,6 +14,13 @@ csvreader = csv.reader(file)
 x_axis_vals = []
 y_axis_vals = []
 rows = []
+# here, you can choose which crop you want to use to perform linear regression upon.
+# The aim is to predict the value of the column "Total Cereals" as appears in the data set.
+# Consider the data-point for 2020-2021: Rice - 1223,Wheat - 1095,Course Cereals- 512,Total Cereals - 2829
+# Simple observation concludes that
+# Rice + wheat + course cereal = total cereal,
+# i.e. we want to attach a coefficient of 1 to each to get closer to the "truth"
+
 list_of_possible_crops = ['Rice','Wheat','Coarse Cereals']
 crop_for_analysis = 'Rice'
 index_to_search = list_of_possible_crops.index(crop_for_analysis)
@@ -47,6 +54,8 @@ def find_deviations(axis_1, axis_2):
 deviation_xx = find_deviations(axis_1=X, axis_2=X)
 deviation_xy = find_deviations(axis_1= X, axis_2 = y)
 
+# in the equation y=b_0 + b_1x, we are writing the code to find values for beta manually.
+# below this, there is also a version where I fit a LinearRegression model and invoke the .coef_ property
 b_1 = deviation_xy/deviation_xx
 b_0 = np.mean(y) - (b_1 * np.mean(X))
 
@@ -66,12 +75,22 @@ reg.fit(X_train, y_train)
 print('Coefficients: ', reg.coef_)
 
 
-# variance score: 1 means perfect prediction
+# closeness score: 1 means perfect prediction
+# We want to find how close we are to the truth, so closer to the value of 1, better our prediction is.
+# We can change the crop we use for analysis and see how our performance changes.
+# In a summary, it was found that Rice as about 99% closeness score, wheat about 98% and course cereal about 80%
+# This is interesting because examining the values in
+#    2020-2021: Rice - 1223,Wheat - 1095,Course Cereals- 512,Total Cereals - 2829
+#    we can say that Rice and Wheat are clearly cultivated in larger quantities compared to total cereals,
+#    so the differences in performance make intuitive sense
 print('Variance score: {}'.format(reg.score(X_test, y_test)))
 
 
-
+# In the following graph, we will plot the values of predictions and the closeness score line
+# The code to auto-save the image to disc has been omitted but rather stored manually.
+# Please refer to the image univariate_linearregression.png.
 inhouse_plotter.plot_variance(X_train, y_train,X_test,y_test,reg)
 
-
+# In the next graph, we will plot the data itself and the regression line to see how well we fit the data.
+# Again, based on the crop we choose, we can see different graphs here.
 inhouse_plotter.plot_regression_line(X, y, b_0,b_1,crop_for_analysis)
