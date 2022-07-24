@@ -22,7 +22,7 @@ rows = []
 # i.e. we want to attach a coefficient of 1 to each to get closer to the "truth"
 
 list_of_possible_crops = ['Rice','Wheat','Coarse Cereals']
-crop_for_analysis = 'Rice'
+crop_for_analysis = 'Coarse Cereals'
 index_to_search = list_of_possible_crops.index(crop_for_analysis)
 for row in csvreader:
     rows.append(row)
