@@ -22,7 +22,7 @@ rows = []
 # i.e. we want to attach a coefficient of 1 to each to get closer to the "truth"
 
 list_of_possible_crops = ['Rice','Wheat','Coarse Cereals']
-crop_for_analysis = 'Coarse Cereals'
+crop_for_analysis = 'Wheat'
 index_to_search = list_of_possible_crops.index(crop_for_analysis)
 for row in csvreader:
     rows.append(row)
@@ -83,7 +83,7 @@ print('Coefficients: ', reg.coef_)
 #    2020-2021: Rice - 1223,Wheat - 1095,Course Cereals- 512,Total Cereals - 2829
 #    we can say that Rice and Wheat are clearly cultivated in larger quantities compared to total cereals,
 #    so the differences in performance make intuitive sense
-print('Variance score: {}'.format(reg.score(X_test, y_test)))
+print('Closeness score: {}'.format(reg.score(X_test, y_test)))
 
 
 # In the following graph, we will plot the values of predictions and the closeness score line

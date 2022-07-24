@@ -42,7 +42,7 @@ reg.fit(X_train, y_train)
 print('Coefficients: ', reg.coef_)
 
 # variance score: 1 means perfect prediction
-print('Variance score: {}'.format(reg.score(X_test, y_test)))
+print('Closeness score: {}'.format(reg.score(X_test, y_test)))
 
 
 
