@@ -32,7 +32,7 @@ class Book:
 
 
 # TODO: access the class attribute
-print('book types: ', Book.BOOK_TYPES)
+print('book types: ', Book.getbooktypes())
 
 # TODO: Create some book instances
 b1 = Book("Title 1",'HARDCOVER')
