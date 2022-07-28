@@ -16,10 +16,20 @@ Over all the banks which is likely to yield higher value, credit card, or debit 
 
 import machine_learning.utils.data_loader as data_loader
 import os
+import numpy as np
 relative_path_to_file = '../data/preprocessed_files/rbi/banks_posatm_summary.csv'
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, relative_path_to_file)
 data = data_loader.get_data(filename)
 print(data[0])
-non_numeric_feature = 'Bank name'
+data[0]=[i.replace('\ufeff','') for i in data[0]]
+print(data[0])
+X,y = data_loader.splitdata_to_features_labels(data[1:])
+X = np.array(X).astype(np.float)
+y = np.array(y).astype(np.float)
+print('shape of data')
+print(X.shape)
+print('shape of labels')
+print(y.shape)
+
 

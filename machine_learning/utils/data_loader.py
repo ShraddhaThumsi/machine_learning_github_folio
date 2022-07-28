@@ -9,10 +9,6 @@ def get_data(filename):
     file.close()
     return data
 
-def get_sub_data(data,colnames,to_exclude=True):
-    subdata = []
-
-    return subdata
 
 def splitdata_to_features_labels(data):
     features = []
