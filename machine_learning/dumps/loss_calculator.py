@@ -15,7 +15,7 @@ def normalize(data):
 X = normalize(X)
 
 def logistic_function(beta,X):
-    return 1.0/(1+np.exp(np.dot(X,beta.T)))
+    return 1.0/(1+np.exp(-np.dot(X,beta.T)))
 
 def gradient_of_sigmoid_wrt_params(beta, X, y):
     predicted_value = logistic_function(beta,X)

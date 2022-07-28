@@ -14,5 +14,5 @@ data = data_loader.get_data(filename)
 print(len(data))
 df = pd.read_csv(filename)
 colnames_for_rollingdelinq = ['num_tl_30dpd','num_tl_90g_dpd_24m','num_tl_120dpd_2m']
-# for c in colnames_for_rollingdelinq:
-#     print(c in data[0])
+for c in colnames_for_rollingdelinq:
+    print(c in data[0])
