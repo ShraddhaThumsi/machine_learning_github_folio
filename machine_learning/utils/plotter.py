@@ -74,3 +74,6 @@ def plot_loss_function(numof_iters,loss_list):
     plt.ylabel(f'Cost funcion (aka log loss)')
     plt.title(f'Curve of loss function over all iterations')
     plt.show()
+
+def plot_f1_score(numof_simus,score_list):
+    pass

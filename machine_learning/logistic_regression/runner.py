@@ -21,33 +21,42 @@ import regression
 import machine_learning.utils.plotter as inhouse_plotter
 relative_path_to_file = '../data/preprocessed_files/rbi/banks_posatm_summary.csv'
 learning_rate = 0.001
-iterations = 300
+iterations_for_learning = 150
+number_of_simulations = 100
+test_set_proportion = 0.4
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, relative_path_to_file)
 X,y = data_loader.get_features_labels(filename)
 print(X.shape)
 print(y.shape)
 
-X_train,X_test,y_train,y_test = data_loader.split_data_to_traintest(X,y)
 
-X_train = data_loader.normalize_data(X_train)
-X_test = data_loader.normalize_data(X_test)
+training_f1_score = []
+testing_f1_score = []
 
 
-reg_obj = regression.LogisticRegression()
-num_iter,cost_list = reg_obj.fit(X_train,y_train,alpha=learning_rate,iter=iterations)
-y_test_pred = reg_obj.predict(X_test)
-y_train_pred = reg_obj.predict(X_train)
+for i in range(number_of_simulations):
+    X_train, X_test, y_train, y_test = data_loader.split_data_to_traintest(X, y,test_size=test_set_proportion)
 
-f1_score_train = regression.F1_score(y_train,y_train_pred)
-f1_score_test = regression.F1_score(y_test,y_test_pred)
-print('f1 score on test data')
-print(f1_score_test)
-print('f1 score on train data')
-print(f1_score_train)
+    X_train = data_loader.normalize_data(X_train)
+    X_test = data_loader.normalize_data(X_test)
+    reg_obj = regression.LogisticRegression()
+    num_iter,cost_list = reg_obj.fit(X_train, y_train, alpha=learning_rate, iter=iterations_for_learning)
+    y_test_pred = reg_obj.predict(X_test)
+    y_train_pred = reg_obj.predict(X_train)
+
+    f1_score_train = regression.F1_score(y_train,y_train_pred)
+    f1_score_test = regression.F1_score(y_test,y_test_pred)
+    training_f1_score.append(f1_score_train)
+    testing_f1_score.append(f1_score_test)
+    print('f1 score on test data')
+    print(f1_score_test)
+    print('f1 score on train data')
+    print(f1_score_train)
 
 
 print('cost_list')
+print(len(cost_list))
 print(cost_list)
 
 inhouse_plotter.plot_loss_function(range(1,num_iter+1),cost_list)
