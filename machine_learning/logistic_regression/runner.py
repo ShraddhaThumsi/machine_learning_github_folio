@@ -13,6 +13,8 @@ Over all the banks which is likely to yield higher value, credit card, or debit 
 
 
 #Month bucketing - 44621 - March 2022, 44652 - April 2022, 44682 - May 2022
+#type bucketing - 1 - Public sector banks, 2 - private sector banks,
+#                 3 - foreign banks, 4- payment banks, 5 - small finance banks
 
 
 import os
@@ -30,6 +32,12 @@ headers,X,y = data_loader.get_features_labels(filename)
 print(X.shape)
 print(y.shape)
 print(headers)
+print('first data point')
+print(X[0])
+print('second data point')
+print(X[1])
+print(len(headers[:-1]) == X.shape[1])
+print(str(int(X[0][0])))
 
 training_f1_score = []
 testing_f1_score = []
