@@ -68,17 +68,11 @@ def plot_regression_line(x, y, b_0,b_1,crop='',is_singlevariate=True):
     plt.show()
 
 
-def plot_loss_function(numof_iters,loss_list):
+def plot_curve(numof_iters, loss_list, include_bar_graph=False):
+    if include_bar_graph:
+        plt.bar(numof_iters, loss_list, color='b', width=0.5)
     plt.scatter(numof_iters,loss_list, color='m', marker='o', s=12)
     plt.xlabel(f'Number of iterations')
     plt.ylabel(f'Cost funcion (aka log loss)')
     plt.title(f'Curve of loss function over all iterations')
-    plt.show()
-
-def plot_f1_score(numof_simus,score_list):
-    plt.bar(numof_simus,score_list,color='b',width=0.5)
-    plt.scatter(numof_simus, score_list, color='m', marker='o', s=12)
-    plt.xlabel(f'Number of simulations')
-    plt.ylabel(f'F1 score')
-    plt.title(f'Performance of logistic regression over many simulations')
     plt.show()

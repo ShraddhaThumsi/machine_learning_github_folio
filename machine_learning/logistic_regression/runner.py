@@ -51,6 +51,7 @@ for i in range(number_of_simulations):
     testing_f1_score.append(f1_score_test)
 
 
-inhouse_plotter.plot_loss_function(range(1,num_iter+1),cost_list)
-inhouse_plotter.plot_f1_score(range(1,number_of_simulations+1),testing_f1_score)
+inhouse_plotter.plot_curve(range(1, num_iter + 1), cost_list)
+inhouse_plotter.plot_curve(range(1,number_of_simulations+1),testing_f1_score,include_bar_graph=True)
+
 
