@@ -5,12 +5,12 @@ class LogisticRegression:
         X = np.c_[np.ones((X.shape[0],1)),X]
         return weights,X
     def sigmoid(self,z):
-        sig = 1/(1+(np.e ** -z))
-        return sig
+        return 1/(1+(np.e ** -z))
 
 
 
-    def fit(self,X,y,alpha=0.001,iter=100):
+
+    def fit(self,X,y,alpha=0.001,iter=200):
         weights,X = self.initialize(X)
         cost_list = np.zeros(iter,)
 
@@ -24,7 +24,7 @@ class LogisticRegression:
             weights = weights - alpha * np.dot(X.T,self.sigmoid(np.dot(X,weights))-np.reshape(y,(len(y),1)))
             cost_list[i] = cost(weights)
         self.weights = weights
-        return cost_list
+        return iter,cost_list
 
     def predict(self,X):
         z = np.dot(self.initialize(X)[1],self.weights)

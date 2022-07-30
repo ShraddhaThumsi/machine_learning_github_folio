@@ -18,7 +18,10 @@ Over all the banks which is likely to yield higher value, credit card, or debit 
 import os
 import data_loader
 import regression
+import machine_learning.utils.plotter as inhouse_plotter
 relative_path_to_file = '../data/preprocessed_files/rbi/banks_posatm_summary.csv'
+learning_rate = 0.001
+iterations = 300
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, relative_path_to_file)
 X,y = data_loader.get_features_labels(filename)
@@ -32,7 +35,7 @@ X_test = data_loader.normalize_data(X_test)
 
 
 reg_obj = regression.LogisticRegression()
-model = reg_obj.fit(X_train,y_train)
+num_iter,cost_list = reg_obj.fit(X_train,y_train,alpha=learning_rate,iter=iterations)
 y_test_pred = reg_obj.predict(X_test)
 y_train_pred = reg_obj.predict(X_train)
 
@@ -45,5 +48,7 @@ print(f1_score_train)
 
 
 print('cost_list')
-print(model)
+print(cost_list)
+
+inhouse_plotter.plot_loss_function(range(1,num_iter+1),cost_list)
 

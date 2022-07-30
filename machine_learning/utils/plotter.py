@@ -66,3 +66,11 @@ def plot_regression_line(x, y, b_0,b_1,crop='',is_singlevariate=True):
     plt.title(f'Total cereal production given {crop_for_analysis} in lakh tonne from 1950-2021')
     # function to show plot
     plt.show()
+
+
+def plot_loss_function(numof_iters,loss_list):
+    plt.scatter(numof_iters,loss_list, color='m', marker='o', s=12)
+    plt.xlabel(f'Number of iterations')
+    plt.ylabel(f'Cost funcion (aka log loss)')
+    plt.title(f'Curve of loss function over all iterations')
+    plt.show()
