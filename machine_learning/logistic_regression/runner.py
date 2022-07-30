@@ -25,23 +25,11 @@ X,y = data_loader.get_features_labels(filename)
 print(X.shape)
 print(y.shape)
 
-X_train,X_test,y_train,y_test = data_loader.train_test_split(X,y)
-# print('shape of training data:')
-# print(X_train.shape)
-# print('shape of training labels')
-# print(y_train.shape)
-#
-#
-# print('shape of testing data:')
-# print(X_test.shape)
-# print('shape of testing labels')
-# print(y_test.shape)
-# print('first row before normalization')
-# print(X_test[0])
+X_train,X_test,y_train,y_test = data_loader.split_data_to_traintest(X,y)
+
 X_train = data_loader.normalize_data(X_train)
 X_test = data_loader.normalize_data(X_test)
-# print('first row after normalization')
-# print(X_test[0])
+
 
 reg_obj = regression.LogisticRegression()
 model = reg_obj.fit(X_train,y_train)
@@ -56,9 +44,6 @@ print('f1 score on train data')
 print(f1_score_train)
 
 
-# print('\n')
-# print('printing test predictions')
-# for tru,pred in zip(y_test,y_test_pred):
-#     print("-------")
-#     print("true label = " + str(tru) + ' ,predicted_label = ' + str(pred))
-#     print('---------')
+print('cost_list')
+print(model)
+
