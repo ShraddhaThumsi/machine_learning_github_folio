@@ -21,6 +21,7 @@ import os
 import data_loader
 import regression
 import machine_learning.utils.plotter as inhouse_plotter
+import machine_learning.utils.math as inhouse_math
 relative_path_to_file = '../data/preprocessed_files/rbi/banks_posatm_summary.csv'
 learning_rate = 0.001
 iterations_for_learning = 175
@@ -38,6 +39,8 @@ print('second data point')
 print(X[1])
 print(len(headers[:-1]) == X.shape[1])
 print(str(int(X[0][0])))
+sum_dict = inhouse_math.get_sum_given_feature(X,headers,'Timeline','total debit card volume')
+print(sum_dict)
 
 training_f1_score = []
 testing_f1_score = []

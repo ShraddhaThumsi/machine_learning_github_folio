@@ -9,8 +9,8 @@ def get_regression_parameters(X,y):
 def get_sum_given_feature(data,all_features,xaxis_metric,yxis_metric):
     xaxis_index = all_features.index(xaxis_metric)
     yaxis_index = all_features.index(yxis_metric)
-    xaxis_values = data[xaxis_index-1]
-    yaxis_values = data[yaxis_index-1]
+    xaxis_values = data[xaxis_index]
+    yaxis_values = data[yaxis_index]
     dict_of_sums_temp = {}
     for index,x in enumerate(xaxis_values):
         if str(int(x)) in dict_of_sums_temp.keys():
