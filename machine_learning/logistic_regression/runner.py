@@ -21,8 +21,8 @@ import regression
 import machine_learning.utils.plotter as inhouse_plotter
 relative_path_to_file = '../data/preprocessed_files/rbi/banks_posatm_summary.csv'
 learning_rate = 0.001
-iterations_for_learning = 150
-number_of_simulations = 100
+iterations_for_learning = 100
+number_of_simulations = 50
 test_set_proportion = 0.4
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, relative_path_to_file)
@@ -60,4 +60,5 @@ print(len(cost_list))
 print(cost_list)
 
 inhouse_plotter.plot_loss_function(range(1,num_iter+1),cost_list)
+inhouse_plotter.plot_f1_score(range(1,number_of_simulations+1),testing_f1_score)
 

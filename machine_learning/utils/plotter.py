@@ -76,4 +76,8 @@ def plot_loss_function(numof_iters,loss_list):
     plt.show()
 
 def plot_f1_score(numof_simus,score_list):
-    pass
+    plt.bar(numof_simus,score_list,color='b',width=0.5)
+    plt.xlabel(f'Number of simulations')
+    plt.ylabel(f'F1 score')
+    plt.title(f'Performance of logistic regression over many simulations')
+    plt.show()
