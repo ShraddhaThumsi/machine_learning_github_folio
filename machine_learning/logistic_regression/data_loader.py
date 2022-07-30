@@ -15,5 +15,12 @@ def get_features_labels(filename):
     return X,y
 
 
-def split_data_to_traintest(X,y,test_size=0.1):
-    return train_test_split(X,y,test_size)
+def split_data_to_traintest(X,y,test_size=0.1,shuffle=True):
+    return train_test_split(X,y,test_size,shuffle)
+
+def normalize_data(data):
+    for i in range(data.shape[1]):
+        data[:,i]=(data[:,i]-np.min(data[:,i]))/(np.max(data[:,i]) - np.min(data[:,i]))
+    return data
+
+
