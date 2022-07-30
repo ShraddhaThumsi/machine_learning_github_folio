@@ -17,6 +17,7 @@ Over all the banks which is likely to yield higher value, credit card, or debit 
 
 import os
 import data_loader
+import regression
 relative_path_to_file = '../data/preprocessed_files/rbi/banks_posatm_summary.csv'
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, relative_path_to_file)
@@ -25,18 +26,39 @@ print(X.shape)
 print(y.shape)
 
 X_train,X_test,y_train,y_test = data_loader.train_test_split(X,y)
-print('shape of training data:')
-print(X_train.shape)
-print('shape of training labels')
-print(y_train.shape)
-
-
-print('shape of testing data:')
-print(X_test.shape)
-print('shape of testing labels')
-print(y_test.shape)
-print('first row before normalization')
-print(X_train[0])
+# print('shape of training data:')
+# print(X_train.shape)
+# print('shape of training labels')
+# print(y_train.shape)
+#
+#
+# print('shape of testing data:')
+# print(X_test.shape)
+# print('shape of testing labels')
+# print(y_test.shape)
+# print('first row before normalization')
+# print(X_test[0])
 X_train = data_loader.normalize_data(X_train)
-print('first row after normalization')
-print(X_train[0])
+X_test = data_loader.normalize_data(X_test)
+# print('first row after normalization')
+# print(X_test[0])
+
+reg_obj = regression.LogisticRegression()
+model = reg_obj.fit(X_train,y_train)
+y_test_pred = reg_obj.predict(X_test)
+y_train_pred = reg_obj.predict(X_train)
+
+f1_score_train = regression.F1_score(y_train,y_train_pred)
+f1_score_test = regression.F1_score(y_test,y_test_pred)
+print('f1 score on test data')
+print(f1_score_test)
+print('f1 score on train data')
+print(f1_score_train)
+
+
+# print('\n')
+# print('printing test predictions')
+# for tru,pred in zip(y_test,y_test_pred):
+#     print("-------")
+#     print("true label = " + str(tru) + ' ,predicted_label = ' + str(pred))
+#     print('---------')
