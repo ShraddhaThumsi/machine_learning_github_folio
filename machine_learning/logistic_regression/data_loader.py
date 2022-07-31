@@ -1,7 +1,6 @@
 
 
 import machine_learning.utils.data_loader as data_loader
-from sklearn.model_selection import train_test_split
 import numpy as np
 
 def get_features_labels(filename):
@@ -15,12 +14,26 @@ def get_features_labels(filename):
     return headers,X,y
 
 
-def split_data_to_traintest(X,y,test_size=0.3,shuffle=True):
-    return train_test_split(X,y,test_size=test_size,shuffle=shuffle)
+def get_sum_given_feature(data,all_features,xaxis_metric,yxis_metric):
+    x_axis_index = all_features.index(xaxis_metric)
+    y_axis_index = all_features.index(yxis_metric)
+    x_axis_values = []
+    y_axis_values = []
+    for d in data:
+        x_axis_values.append(str(int(d[x_axis_index])))
+        y_axis_values.append(float(d[y_axis_index]))
+    dict_of_vals = {}
+    for index,xval in enumerate(x_axis_values):
+        yval = y_axis_values[index]
+        if xval in dict_of_vals:
+            exist = dict_of_vals[xval]
+            exist.append(float(yval))
+            dict_of_vals[xval] = exist
+        else:
+            dict_of_vals[xval] = [yval]
 
-def normalize_data(data):
-    for i in range(data.shape[1]):
-        data[:,i]=(data[:,i]-np.min(data[:,i]))/(np.max(data[:,i]) - np.min(data[:,i]))
-    return data
+    dict_of_sums = {}
+    for key,list_of_vals in dict_of_vals.items():
+        dict_of_sums[key] = np.sum(list_of_vals)
 
-
+    return dict_of_sums
