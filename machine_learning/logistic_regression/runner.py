@@ -19,9 +19,9 @@ Over all the banks which is likely to yield higher value, credit card, or debit 
 
 import os
 import data_loader
-import machine_learning.logistic_regression.data_loader
-import machine_learning.utils.data_loader
-import machine_learning.utils.math
+import machine_learning.logistic_regression.data_loader as logreg_dataloader
+import machine_learning.utils.data_loader as generic_data_loader
+
 import regression
 import machine_learning.utils.plotter as inhouse_plotter
 import machine_learning.utils.math as inhouse_math
@@ -36,24 +36,18 @@ headers,X,y = data_loader.get_features_labels(filename)
 print(X.shape)
 print(y.shape)
 print(headers)
-print('first data point')
-print(X[0])
-print('second data point')
-print(X[1])
-print(len(headers[:-1]) == X.shape[1])
-print(str(int(X[0][0])))
-sum_dict = machine_learning.logistic_regression.data_loader.get_sum_given_feature(X, headers, 'Timeline', 'total debit card volume')
-print(sum_dict)
+
+
 
 training_f1_score = []
 testing_f1_score = []
 
 
 for i in range(number_of_simulations):
-    X_train, X_test, y_train, y_test = machine_learning.utils.data_loader.split_data_to_traintest(X, y, test_size=test_set_proportion)
+    X_train, X_test, y_train, y_test = generic_data_loader.split_data_to_traintest(X, y, test_size=test_set_proportion)
 
-    X_train = machine_learning.utils.math.normalize_data(X_train)
-    X_test = machine_learning.utils.math.normalize_data(X_test)
+    X_train = inhouse_math.normalize_data(X_train)
+    X_test = inhouse_math.normalize_data(X_test)
     reg_obj = regression.LogisticRegression()
     num_iter,cost_list = reg_obj.fit(X_train, y_train, alpha=learning_rate, iter=iterations_for_learning)
     y_test_pred = reg_obj.predict(X_test)
@@ -69,3 +63,9 @@ inhouse_plotter.plot_curve(range(1, num_iter + 1), cost_list)
 inhouse_plotter.plot_curve(range(1,number_of_simulations+1),testing_f1_score,include_bar_graph=True)
 
 
+month_sum_dict = logreg_dataloader.get_sum_given_feature(X, headers, 'Timeline', 'total debit card volume')
+month_correction_map = {'44621':'March 2022', '44652':'April 2022', '44682':'May 2022'}
+banktype_correction_map = {'1':'Public Sector Bank', '2': 'Private Sector Bank', '3':'Foreign Bank', '4':'Payment Bank', '5':'Small Finance Bank'}
+month_sums = data_loader.sumdict_with_corrected_labelnames(month_sum_dict, month_correction_map)
+print(month_sum_dict)
+print(month_sums)

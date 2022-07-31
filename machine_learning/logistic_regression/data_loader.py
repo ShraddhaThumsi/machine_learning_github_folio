@@ -37,3 +37,11 @@ def get_sum_given_feature(data,all_features,xaxis_metric,yxis_metric):
         dict_of_sums[key] = np.sum(list_of_vals)
 
     return dict_of_sums
+
+
+def sumdict_with_corrected_labelnames(dict_to_correct,correction_map):
+    corrected_dict = {}
+    for key,value in dict_to_correct.items():
+        correct_name = correction_map[key]
+        corrected_dict[correct_name] = value
+    return corrected_dict
