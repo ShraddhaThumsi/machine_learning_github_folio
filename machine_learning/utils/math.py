@@ -1,4 +1,7 @@
 import numpy as np
+
+
+
 def get_regression_parameters(X,y):
 
     xtx = np.matmul(X.T,X)
@@ -7,29 +10,25 @@ def get_regression_parameters(X,y):
     return np.matmul(xtx_inverse,xty)
 
 def get_sum_given_feature(data,all_features,xaxis_metric,yxis_metric):
-    print('in find sum function')
-    print('headers received are: ')
-    print(all_features)
-    print('xaxis feature requested is')
-    print(xaxis_metric)
-    print('y axis feature requested is')
-    print(yxis_metric )
-    xaxis_index = all_features.index(xaxis_metric)
-    yaxis_index = all_features.index(yxis_metric)
-    print(f'index of  {xaxis_metric} is {xaxis_index}')
-    print(f'index of  {yxis_metric} is {yaxis_index}')
-    xaxis_values = data[xaxis_index]
-    yaxis_values = data[yaxis_index]
-    print(f'value of {xaxis_metric}')
-    dict_of_sums_temp = {}
-    for index,x in enumerate(xaxis_values):
-        if str(int(x)) in dict_of_sums_temp.keys():
-            existing_list = dict_of_sums_temp[x]
-            existing_list.append(yaxis_values[index])
-            dict_of_sums_temp[str(int(x))] = existing_list
+    x_axis_index = all_features.index(xaxis_metric)
+    y_axis_index = all_features.index(yxis_metric)
+    x_axis_values = []
+    y_axis_values = []
+    for d in data:
+        x_axis_values.append(str(int(d[x_axis_index])))
+        y_axis_values.append(float(d[y_axis_index]))
+    dict_of_vals = {}
+    for index,xval in enumerate(x_axis_values):
+        yval = y_axis_values[index]
+        if xval in dict_of_vals:
+            exist = dict_of_vals[xval]
+            exist.append(float(yval))
+            dict_of_vals[xval] = exist
         else:
-            dict_of_sums_temp[str(int(x))] = [yaxis_values[index]]
+            dict_of_vals[xval] = [yval]
+
     dict_of_sums = {}
-    for key,list_to_add in dict_of_sums_temp.items():
-        dict_of_sums[key] = np.sum(list_to_add)
+    for key,list_of_vals in dict_of_vals.items():
+        dict_of_sums[key] = np.sum(list_of_vals)
+
     return dict_of_sums
