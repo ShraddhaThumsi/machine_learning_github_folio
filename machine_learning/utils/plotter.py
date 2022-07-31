@@ -90,5 +90,6 @@ def plot_sums_as_pie(keylist, sumlist,title, convert_sums_to_int=False):
         sumlist = [int(s) for s in sumlist]
 
     plt.pie(sumlist,labels=present_keyswith_indivvals(keylist, sumlist),autopct='%1.2f%%')
+    plt.legend(sumlist, labels=present_keyswith_indivvals(keylist, sumlist), loc='upper right', bbox_to_anchor=(-0.1, 1.),fontsize=8)
     plt.title(title)
     plt.show()
