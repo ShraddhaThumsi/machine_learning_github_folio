@@ -76,3 +76,19 @@ def plot_curve(numof_iters, loss_list, include_bar_graph=False):
     plt.ylabel(f'Cost funcion (aka log loss)')
     plt.title(f'Curve of loss function over all iterations')
     plt.show()
+
+
+def plot_sums_as_pie(keylist, sumlist,title, convert_sums_to_int=False):
+    # code credits https://www.tutorialspoint.com/matplotlib/matplotlib_pie_chart.htm
+    def present_keyswith_indivvals(keys,sums):
+        new_keys = []
+        for k,s in zip(keys,sums):
+            key = f'{k} - {s:,}'
+            new_keys.append(key)
+        return new_keys
+    if convert_sums_to_int:
+        sumlist = [int(s) for s in sumlist]
+
+    plt.pie(sumlist,labels=present_keyswith_indivvals(keylist, sumlist),autopct='%1.2f%%')
+    plt.title(title)
+    plt.show()
