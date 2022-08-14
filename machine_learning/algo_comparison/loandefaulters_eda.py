@@ -5,15 +5,20 @@ relative_path_to_data = '../data/preprocessed_files/kaggle/loan_sub.csv'
 #thumsishraddhasatish@gmail.com, I will be happy to share the file with you.
 # if you would like to download the original data from Kaggle, it can be found at https://www.kaggle.com/datasets/adarshsng/lending-club-loan-data-csv
 
+
+
+#this file is the driver code for EDA (Exploratory Data Analysis) on the lending club data, a rich dataset on credit risk and financial parameters of borrowers of Lending Club
+# This EDA will be followed by a comparative view of performances of different algorithms to predict whether a borrower will default on his loan.
 import os
 import pandas as pd
 import machine_learning.utils.data_loader as data_loader
+import machine_learning.utils.algorithm_results_plotter as inhouse_plotter
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, relative_path_to_data)
 
 data = data_loader.get_data(filename)
 print(len(data))
 df = pd.read_csv(filename)
-colnames_for_rollingdelinq = ['last_credit_pull_d','next_pymnt_d','issue_d','dti','num_sats','num_tl_30dpd','num_tl_90g_dpd_24m','num_tl_120dpd_2m']
-for c in colnames_for_rollingdelinq:
+familiar_columns = ['last_credit_pull_d', 'next_pymnt_d', 'issue_d', 'dti', 'num_sats', 'num_tl_30dpd', 'num_tl_90g_dpd_24m', 'num_tl_120dpd_2m']
+for c in familiar_columns:
     print(c in data[0])

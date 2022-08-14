@@ -4,7 +4,7 @@ import csv
 import numpy as np
 from sklearn import linear_model
 import os
-import machine_learning.utils.plotter as inhouse_plotter
+import machine_learning.utils.algorithm_results_plotter as inhouse_plotter
 import machine_learning.utils.math as inhouse_math
 dirname = os.path.dirname(__file__)
 data_pairs_path = '../data/preprocessed_files/rbi/crop_data_pairs.csv'

@@ -23,7 +23,7 @@ import machine_learning.logistic_regression.data_loader as logreg_dataloader
 import machine_learning.utils.data_loader as generic_data_loader
 
 import regression
-import machine_learning.utils.plotter as inhouse_plotter
+import machine_learning.utils.algorithm_results_plotter as inhouse_plotter
 import machine_learning.utils.math as inhouse_math
 relative_path_to_file = '../data/preprocessed_files/rbi/banks_posatm_summary.csv'
 learning_rate = 0.001

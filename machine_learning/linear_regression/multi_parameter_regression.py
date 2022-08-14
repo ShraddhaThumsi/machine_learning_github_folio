@@ -5,7 +5,7 @@ import numpy as np
 from sklearn import linear_model
 import os
 import csv
-import machine_learning.utils.plotter as inhouse_plotter
+import machine_learning.utils.algorithm_results_plotter as inhouse_plotter
 import machine_learning.utils.math as inhouse_math
 dirname = os.path.dirname(__file__)
 
