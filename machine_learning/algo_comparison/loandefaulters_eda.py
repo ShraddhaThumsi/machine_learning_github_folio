@@ -12,7 +12,9 @@ relative_path_to_data = '../data/preprocessed_files/kaggle/loan_sub.csv'
 import os
 import pandas as pd
 import machine_learning.utils.data_loader as data_loader
-import machine_learning.utils.algorithm_results_plotter as inhouse_plotter
+import machine_learning.utils.data_eda_plotter as inhouse_plotter
+import pandas as pd
+
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, relative_path_to_data)
 
@@ -20,5 +22,18 @@ data = data_loader.get_data(filename)
 print(len(data))
 df = pd.read_csv(filename)
 familiar_columns = ['last_credit_pull_d', 'next_pymnt_d', 'issue_d', 'dti', 'num_sats', 'num_tl_30dpd', 'num_tl_90g_dpd_24m', 'num_tl_120dpd_2m']
-for c in familiar_columns:
-    print(c in data[0])
+print('head of dataframe')
+print(df.head())
+print('describing basic stats of data')
+print(df.describe())
+print('printing datatypes of columns')
+print(df.info())
+print(type(df))
+print('loan status counts')
+print(df.loc[:,'loan_status'].value_counts())
+
+#inhouse_plotter.plot_column_counts(df,'loan_status', 'Loan Status')
+
+def get_data_frame():
+    return df
+
