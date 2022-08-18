@@ -12,7 +12,7 @@ relative_path_to_data = '../data/preprocessed_files/kaggle/loan_sub.csv'
 import os
 import pandas as pd
 import machine_learning.utils.data_loader as data_loader
-import machine_learning.utils.data_eda_plotter as inhouse_plotter
+#import machine_learning.utils.data_eda_plotter as inhouse_plotter
 import pandas as pd
 
 dirname = os.path.dirname(__file__)
