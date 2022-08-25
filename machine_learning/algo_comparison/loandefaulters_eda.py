@@ -22,18 +22,8 @@ data = data_loader.get_data(filename)
 print(len(data))
 df = pd.read_csv(filename)
 familiar_columns = ['last_credit_pull_d', 'next_pymnt_d', 'issue_d', 'dti', 'num_sats', 'num_tl_30dpd', 'num_tl_90g_dpd_24m', 'num_tl_120dpd_2m']
-print('head of dataframe')
-print(df.head())
-print('describing basic stats of data')
-print(df.describe())
-print('printing datatypes of columns')
-print(df.info())
-print(type(df))
-print('loan status counts')
-print(df.loc[:,'loan_status'].value_counts())
 
-#inhouse_plotter.plot_column_counts(df,'loan_status', 'Loan Status')
+print(list(df.loc[:,'id'])[0])
 
-def get_data_frame():
-    return df
+
 
