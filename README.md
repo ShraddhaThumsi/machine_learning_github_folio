@@ -4,9 +4,11 @@ This repository is meant for mainly machine learning experiments, but may includ
 Code so far in the machine learning directory includes:
 1. Linear Regression - single and multi-parameter
 2. Logistic Regression
-3. CECL model using roll-rate analysis on financial data (work in progress)
+3. Random Forest Classifier
 
 All credits to sources of data sets and references have been duly mentioned in the data preparer code for the respective algorithms
 
-If you want to collaborate with me, please get in touch on thumsishraddhasatish@gmail.com or https://www.linkedin.com/in/sthumsi/
+If you want to collaborate with me, please get in touch on thumsishraddhasatish@gmail.com or https://www.linkedin.com/in/sthumsi/. 
+I have a Kaggle portolio as well, which can be found at https://www.kaggle.com/thumsishraddha/code
+
 
