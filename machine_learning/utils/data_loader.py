@@ -28,8 +28,8 @@ def splitdata_to_features_labels(data):
     return features,labels
 
 
-def split_data_to_traintest(X,y,test_size=0.3,shuffle=True):
-    return train_test_split(X,y,test_size=test_size,shuffle=shuffle)
+def split_data_to_traintest(X,y,test_size=0.3,shuffle=True,random_state=None):
+    return train_test_split(X,y,test_size=test_size,shuffle=shuffle,random_state=random_state)
 
 
 def get_features_labels(filename):
