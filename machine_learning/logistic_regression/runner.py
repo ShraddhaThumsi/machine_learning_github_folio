@@ -30,7 +30,7 @@ import machine_learning.utils.math as inhouse_math
 relative_path_to_file = '../data/preprocessed_files/rbi/banks_posatm_summary.csv'
 learning_rate = 0.0009
 iterations_for_learning = 275
-number_of_simulations = 100
+number_of_simulations = 500
 test_set_proportion = 0.4
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, relative_path_to_file)
