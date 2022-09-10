@@ -1,4 +1,5 @@
 relative_path_to_data = '../data/preprocessed_files/kaggle/loan_sub.csv'
+#relative_path_to_data = '../data/original_files/kaggle/accepted_2007_to_2018Q4.csv'
 #the loan_sub file has been left out of git because its size exceeds 100mb.
 # I have selected the first 20% of the dataset into my subset to allow for speedy processing.
 # In case you would like to run the code on the same data as I, please reach out to me at
@@ -23,7 +24,12 @@ print(len(data))
 df = pd.read_csv(filename)
 familiar_columns = ['last_credit_pull_d', 'next_pymnt_d', 'issue_d', 'dti', 'num_sats', 'num_tl_30dpd', 'num_tl_90g_dpd_24m', 'num_tl_120dpd_2m']
 
-print(list(df.loc[:,'id'])[0])
+print(set(list(df.loc[:,'issue_d'])))
+print(sum(list(df.loc[:,'num_sats'])))
+print(sum(list(df.loc[:,'num_tl_30dpd'])))
+print(sum(list(df.loc[:,'num_tl_90g_dpd_24m'])))
+print(sum(list(df.loc[:,'num_tl_120dpd_2m'])))
+
 
 
 

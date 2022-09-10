@@ -65,11 +65,11 @@ inhouse_plotter.plot_curve(range(1,number_of_simulations+1),testing_f1_score,inc
 
 month_sum_dict = logreg_dataloader.get_sum_given_feature(X, headers, 'Timeline', 'total debit card value')
 banktype_sum_dict = logreg_dataloader.get_sum_given_feature(X, headers, 'type of bank', 'total debit card value')
-month_correction_map = {'44621':'March 2022', '44652':'April 2022', '44682':'May 2022'}
+month_correction_map = {'44621':'March 2022', '44652':'April 2022', '44682':'May 2022','44713':'June 2022','44743':'July 2022'}
 banktype_correction_map = {'1':'Public Sector Bank', '2': 'Private Sector Bank', '3':'Foreign Bank', '4':'Payment Bank', '5':'Small Finance Bank'}
 month_sums = data_loader.sumdict_with_corrected_labelnames(month_sum_dict, month_correction_map)
 banktype_sums = data_loader.sumdict_with_corrected_labelnames(banktype_sum_dict, banktype_correction_map)
 inhouse_plotter.plot_sums_as_pie(list(month_sums.keys()), list(month_sums.values()),'Value of debit card transactions per month (in Rs \'000)',convert_sums_to_int=False)
-inhouse_plotter.plot_sums_as_pie(list(banktype_sums.keys()), list(banktype_sums.values()),'Value of debit card transactions per bank type over March,April,May 2022 (in Rs \'000)',convert_sums_to_int=False)
+inhouse_plotter.plot_sums_as_pie(list(banktype_sums.keys()), list(banktype_sums.values()),'Value of debit card transactions per bank type over March-July 2022 (in Rs \'000)',convert_sums_to_int=False)
 print(month_sums)
 print(banktype_sums)
