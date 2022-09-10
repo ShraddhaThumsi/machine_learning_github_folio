@@ -1,17 +1,4 @@
-
-
-import machine_learning.utils.data_loader as data_loader
 import numpy as np
-
-def get_features_labels(filename):
-    data = data_loader.get_data(filename)
-
-    data[0]=[i.replace('\ufeff','') for i in data[0]]
-    headers = data[0]
-    X,y = data_loader.splitdata_to_features_labels(data[1:])
-    X = np.array(X).astype(np.float)
-    y = np.array(y).astype(np.float)
-    return headers,X,y
 
 
 def get_sum_given_feature(data,all_features,xaxis_metric,yxis_metric):

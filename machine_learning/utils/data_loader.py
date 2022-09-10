@@ -1,5 +1,6 @@
 import csv
 
+import numpy as np
 from sklearn.model_selection import train_test_split
 
 
@@ -29,3 +30,14 @@ def splitdata_to_features_labels(data):
 
 def split_data_to_traintest(X,y,test_size=0.3,shuffle=True):
     return train_test_split(X,y,test_size=test_size,shuffle=shuffle)
+
+
+def get_features_labels(filename):
+    data = get_data(filename)
+
+    data[0]=[i.replace('\ufeff','') for i in data[0]]
+    headers = data[0]
+    X,y = splitdata_to_features_labels(data[1:])
+    X = np.array(X).astype(np.float)
+    y = np.array(y).astype(np.float)
+    return headers,X,y

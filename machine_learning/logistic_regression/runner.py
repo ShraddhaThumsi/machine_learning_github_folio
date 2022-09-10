@@ -20,7 +20,9 @@ Over all the banks which is likely to yield higher value, credit card, or debit 
 import os
 import data_loader
 import machine_learning.logistic_regression.data_loader as logreg_dataloader
+import machine_learning.utils.data_loader
 import machine_learning.utils.data_loader as generic_data_loader
+import machine_learning.utils.math
 
 import regression
 import machine_learning.utils.algorithm_results_plotter as inhouse_plotter
@@ -32,7 +34,7 @@ number_of_simulations = 100
 test_set_proportion = 0.4
 dirname = os.path.dirname(__file__)
 filename = os.path.join(dirname, relative_path_to_file)
-headers,X,y = data_loader.get_features_labels(filename)
+headers,X,y = machine_learning.utils.data_loader.get_features_labels(filename)
 print(X.shape)
 print(y.shape)
 print(headers)
@@ -53,8 +55,8 @@ for i in range(number_of_simulations):
     y_test_pred = reg_obj.predict(X_test)
     y_train_pred = reg_obj.predict(X_train)
 
-    f1_score_train = regression.F1_score(y_train,y_train_pred)
-    f1_score_test = regression.F1_score(y_test,y_test_pred)
+    f1_score_train = machine_learning.utils.math.F1_score(y_train, y_train_pred)
+    f1_score_test = machine_learning.utils.math.F1_score(y_test, y_test_pred)
     training_f1_score.append(f1_score_train)
     testing_f1_score.append(f1_score_test)
 
