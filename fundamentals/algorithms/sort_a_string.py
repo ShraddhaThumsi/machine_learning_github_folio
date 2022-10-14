@@ -1,4 +1,6 @@
-
+# Problem from LinkedIn learning module
+# Problem: sort the words of the sentence by the lower case of first letter
+# and return the string with the original case of the first letter
 def is_firstchar_lower(s):
     return s[0].islower()
 
@@ -14,9 +16,9 @@ def sort_a_string(s):
             string_parts_to_return.append(item.capitalize())
 
     return ' '.join(string_parts_to_return)
-#string = 'a sling Slung off her neck'
+string = 'a sling Slung off her neck'
 #string = 'apple ORANGE banana'
-string = 'a cat that was big'
+#string = 'a cat that was big'
 print('original string: ')
 print(string)
 print('sorted string: ')
