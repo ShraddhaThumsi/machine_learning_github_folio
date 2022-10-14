@@ -73,8 +73,8 @@ def plot_curve(numof_iters, loss_list, include_bar_graph=False):
         plt.bar(numof_iters, loss_list, color='b', width=0.5)
     plt.scatter(numof_iters,loss_list, color='m', marker='o', s=12)
     plt.xlabel(f'Number of iterations')
-    plt.ylabel(f'Cost funcion (aka log loss)')
-    plt.title(f'Curve of loss function over all iterations')
+    plt.ylabel(f'Score')
+    plt.title(f'F1 Score of model over many iterations')
     plt.show()
 
 
