@@ -14,26 +14,20 @@ def sizeof_list(head):
         n=n.next
     return size
 
-head=ListNode(1)
-second=ListNode(2)
-third=ListNode(3)
-fourth=ListNode(4)
-head.next=second
-second.next=third
-third.next=fourth
-print(sizeof_list(head))
 def insert_listnode(h,d):
     to_be_inserted=ListNode(d)
     n=h
     while n.next is not None:
         n=n.next
     n.next=to_be_inserted
-    return head
+    return h
 def check_list(head):
     n=head
+    s=''
     while n is not None:
-        print(n.data)
+        s=s+str(n.data)+'->'
         n=n.next
+    return s
 def remove_from_list(head,d):
 
     n=head
@@ -47,10 +41,5 @@ def build_ll_from_arr(arr):
         index=list_of_nodes.index(l)
         l.next=list_of_nodes[index+1]
     return list_of_nodes[0]
-head2=build_ll_from_arr([1,2,3,4,5])
-insert_listnode(head2,6)
-insert_listnode(head2,7)
-check_list(head2)
-remove_from_list(head2,5)
-check_list(head2)
+
 
