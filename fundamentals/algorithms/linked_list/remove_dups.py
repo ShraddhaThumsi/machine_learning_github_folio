@@ -1,7 +1,7 @@
 #removing duplicate values from a linked list
 import fundamentals.data_structures.linked_list as linked_list
 list_items=[1,3,4,6,4,5,6,7,8]
-#the final linked list should be 1->3->4->6->
+#the final linked list should be 1->3->4->6->5->7>8
 head=linked_list.build_ll_from_arr(list_items)
 
 def remove_dups(h):
