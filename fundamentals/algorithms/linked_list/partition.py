@@ -18,7 +18,7 @@ def partition_list_by_node(head,node):
     lt_items.extend(gt_eq_items)
     return lt_items
 
-test_node = linked_list.ListNode(18)
+test_node = linked_list.ListNode(7)
 partitioned_list=partition_list_by_node(head,test_node)
 partitioned_list_head=linked_list.build_ll_from_arr(partitioned_list)
 print(linked_list.check_list(partitioned_list_head))
