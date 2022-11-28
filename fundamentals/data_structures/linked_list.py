@@ -41,5 +41,12 @@ def build_ll_from_arr(arr):
         index=list_of_nodes.index(l)
         l.next=list_of_nodes[index+1]
     return list_of_nodes[0]
+def delistify(head):
+    list_as_str=''
+    n=head
+    while n is not None:
+        list_as_str+=str(n.data)
+        n=n.next
+    return list_as_str
 
 
