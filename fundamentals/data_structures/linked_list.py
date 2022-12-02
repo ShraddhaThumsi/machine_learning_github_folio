@@ -3,9 +3,6 @@ class ListNode:
         self.data = d
         self.next = None
 
-
-
-
 def sizeof_list(head):
     n = head
     size=0
@@ -29,7 +26,6 @@ def check_list(head):
         n=n.next
     return s
 def remove_from_list(head,d):
-
     n=head
     while n.next.data!=d:
         n=n.next
