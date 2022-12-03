@@ -2,6 +2,10 @@ class ListNode:
     def __init__(self,d):
         self.data = d
         self.next = None
+    def get_data(self):
+        return self.data
+    def get_next(self):
+        return self.next
 
 def sizeof_list(head):
     n = head
