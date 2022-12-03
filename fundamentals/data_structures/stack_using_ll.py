@@ -2,11 +2,16 @@ import fundamentals.data_structures.linked_list as linked_list
 
 
 def build_stack(arr,sort=False):
-    arr_as_list=[i for i in arr[::-1]]
+    arr_as_list=arr[::-1]
+
     # for index,a in enumerate(arr_as_list[:-1]):
     #     a.next=arr_as_list[index+1]
-    stack_head = push(None,arr_as_list[0])
     print('in build stack function')
+    print('attempting to create a stack from  ' + str(arr_as_list))
+    print('first element before attempting to sort is ' + str(arr_as_list[0]))
+    stack_head = push(None,arr_as_list[0],sort)
+
+
 
     for a in arr_as_list[1:]:
         stack_head = push(stack_head,a,sort)
@@ -24,17 +29,19 @@ def check_stack(h):
 def push(h,d,sort=False):
     node = linked_list.ListNode(d)
     print('in push function')
-
-    if sort:
-        if int(h.data) < int(d):
-            node.next=h.next
-            h.next=node
-        else:
-            node.next = h
-            h = node
-    else:
-        node.next=h
+    if h is None:
         h=node
+    else:
+        if sort:
+            if int(h.data) < int(d):
+                node.next=h.next
+                h.next=node
+            else:
+                node.next = h
+                h = node
+        else:
+            node.next=h
+            h=node
     return h
 
 
