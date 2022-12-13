@@ -9,7 +9,7 @@ import machine_learning.utils.algorithm_results_plotter
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 
-relative_path_to_file = '../machine_learning/data/preprocessed_files/rbi/banks_posatm_summary.csv'
+relative_path_to_file = '../data/preprocessed_files/rbi/banks_posatm_summary.csv'
 test_set_proportion = 0.4
 number_of_simulations = 500
 random_state = None
