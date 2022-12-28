@@ -33,3 +33,28 @@ def plot_summation(list_of_items, multiplier):
     plot(summation)
 
 plot_summation([1,2,5,2,3],3)
+
+
+#plot the following functions using Sympy
+#source: https://tutorial.math.lamar.edu/problems/calci/diffformulas.aspx
+#1. g(z) = 4z^7-3z^-7+9z
+#2. g(x) = x^1/3
+#3. f(x) = sqrt(x) + 8cubroot(x) - 2fourthroot(x)
+
+def plot_nthroot(nth_root,power=False):
+    x = symbols('x')
+    if power:
+        g_z = x**nth_root
+    else:
+        g_z = x ** (1/nth_root)
+    print(g_z.subs(x,2))
+    return g_z
+
+def prob1():
+    x = symbols('x')
+    g_z = (4 * plot_nthroot(7,True)) - (3 * plot_nthroot(-7,True)) + 9*x
+    print(g_z.subs(x,2))
+    plot(g_z)
+#plot_nthroot(2,power=True)
+
+prob1()
