@@ -38,8 +38,7 @@ plot_summation([1,2,5,2,3],3)
 #plot the following functions using Sympy
 #source: https://tutorial.math.lamar.edu/problems/calci/diffformulas.aspx
 #1. g(z) = 4z^7-3z^-7+9z
-#2. g(x) = x^1/3
-#3. f(x) = sqrt(x) + 8cubroot(x) - 2fourthroot(x)
+#2. f(x) = sqrt(x) + 8cubroot(x) - 2fourthroot(x)
 
 def plot_nthroot(nth_root,power=False):
     x = symbols('x')
@@ -47,7 +46,6 @@ def plot_nthroot(nth_root,power=False):
         g_z = x**nth_root
     else:
         g_z = x ** (1.0/nth_root)
-    print(g_z.subs(x,2.0))
     return g_z
 
 def prob1():
@@ -55,6 +53,11 @@ def prob1():
     g_z = (4.0 * plot_nthroot(7,True)) - (3.0 * plot_nthroot(-7,True)) + 9.0*x
     print(g_z.subs(x,2))
     plot(g_z)
-#plot_nthroot(2,power=True)
 
 prob1()
+
+def prob2():
+    f_x = (plot_nthroot(2)) + (8 * plot_nthroot(3)) - (2 * plot_nthroot(4))
+    print(f_x.subs(symbols('x'),2))
+    plot(f_x)
+prob2()
