@@ -46,13 +46,13 @@ def plot_nthroot(nth_root,power=False):
     if power:
         g_z = x**nth_root
     else:
-        g_z = x ** (1/nth_root)
-    print(g_z.subs(x,2))
+        g_z = x ** (1.0/nth_root)
+    print(g_z.subs(x,2.0))
     return g_z
 
 def prob1():
     x = symbols('x')
-    g_z = (4 * plot_nthroot(7,True)) - (3 * plot_nthroot(-7,True)) + 9*x
+    g_z = (4.0 * plot_nthroot(7,True)) - (3.0 * plot_nthroot(-7,True)) + 9.0*x
     print(g_z.subs(x,2))
     plot(g_z)
 #plot_nthroot(2,power=True)
